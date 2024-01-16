@@ -47,7 +47,7 @@ function App() {
         <div className='content mt-4'>
           <div className='form flex flex-col items-center justify-center' >
             <label className='mb-2'>¿Cuales son tus ingresos mensuales?</label>
-            <input type="number" className='input input-bordered w-full mb-2' value={grossIncome} onChange={(e) => setGrossIncome(e.target.value)} />
+            <input type="number" className='input input-bordered w-full mb-2' value={grossIncome.toLocaleString()} onChange={(e) => setGrossIncome(e.target.value)} />
             <button onClick={calculateTax} className='btn w-full mb-2 btn-primary'>Calcular</button>
           </div>
 
