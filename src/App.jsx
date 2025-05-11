@@ -10,6 +10,7 @@ function App() {
 
   const calculateTax = (e) => {
     setGrossIncome(e.target.value)
+    setAnnualGrossIncome(grossIncome * 12)
 
     let grossUVTIncome = grossIncome * 12 / UVT
     let marginalTaxRate = 0
@@ -34,7 +35,6 @@ function App() {
       additionalTax = 10352 * UVT
     }
 
-    setAnnualGrossIncome(grossIncome * 12)
     setTax(marginalTaxRate / 100 * grossIncome + additionalTax)
     // setAnnualNetIncome(annualGrossIncome - tax)
   }
