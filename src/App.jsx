@@ -8,13 +8,16 @@ function App() {
   const [tax, setTax] = useState(0)
   const UVT = 47065
 
-  const calculateTax = (e) => {
+  const handleChange = (e)=>{
+    setAnnualGrossIncome(e.target.value * 12)
     setGrossIncome(e.target.value)
-    setAnnualGrossIncome(grossIncome * 12)
-
+  }
+  
+  const calculateTax = () => {
     let grossUVTIncome = grossIncome * 12 / UVT
     let marginalTaxRate = 0
     let additionalTax = 0
+    
     if (grossUVTIncome > 1090 && grossUVTIncome <= 1700) {
       marginalTaxRate = 19
     } else if (grossUVTIncome > 1700 && grossUVTIncome <= 4100) {
