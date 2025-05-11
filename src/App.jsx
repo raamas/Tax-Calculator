@@ -9,7 +9,6 @@ function App() {
   const UVT = 47065
 
   const handleChange = (e)=>{
-    setAnnualGrossIncome(e.target.value * 12)
     setGrossIncome(e.target.value)
   }
   
@@ -39,6 +38,7 @@ function App() {
     }
 
     setTax(marginalTaxRate / 100 * grossIncome + additionalTax)
+    setAnnualGrossIncome(e.target.value * 12)
     // setAnnualNetIncome(annualGrossIncome - tax)
   }
 
@@ -51,10 +51,11 @@ function App() {
           <div className='form flex flex-col items-center justify-center' >
             <label className='mb-2'>¿Cuales son tus ingresos mensuales?</label>
             <input type="number" className='input input-bordered w-full mb-2' value={grossIncome.toLocaleString()} onChange={(e) => calculateTax(e)} />
-{/*             <!--button onClick={calculateTax} className='btn w-full mb-2 btn-primary'>Calcular</button--> */}
+            <button onClick={calculateTax} className='btn w-full mb-2 btn-primary'>Calcular</button>
           </div>
 
-          <div className='result mt-2 gap-2' >
+          {if(grossIncome != 0){
+            return(          <div className='result mt-2 gap-2' >
             <div className='mb-4'>
               <h3>Tus ingresos anuales fueron de:</h3>
               <h2 className='text-lg'>${annualGrossIncome.toLocaleString()} COP</h2>
@@ -69,7 +70,8 @@ function App() {
               <h3>Tus ingresos netos anuales son </h3>
               <h2 className='text-lg'>${(annualGrossIncome - tax).toLocaleString()} COP</h2>
             </div>
-          </div>
+          </div>)
+          }}
         </div>
       </div>
     </>
