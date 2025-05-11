@@ -54,23 +54,23 @@ function App() {
             <button onClick={calculateTax} className='btn w-full mb-2 btn-primary'>Calcular</button>
           </div>
 
-          {if(grossIncome != 0){
-            return(          <div className='result mt-2 gap-2' >
-            <div className='mb-4'>
-              <h3>Tus ingresos anuales fueron de:</h3>
-              <h2 className='text-lg'>${annualGrossIncome.toLocaleString()} COP</h2>
-            </div>
+          {(grossIncome != 0)&&{
+            <div className='result mt-2 gap-2' >
+              <div className='mb-4'>
+                <h3>Tus ingresos anuales fueron de:</h3>
+                <h2 className='text-lg'>${annualGrossIncome.toLocaleString()} COP</h2>
+              </div>
 
-            <div className="mb-4">
-              <h3>El impuesto que debes pagar en 2024 es de:</h3>
-              <h2 className='text-lg'>${tax.toLocaleString()} COP</h2>
+              <div className="mb-4">
+                <h3>El impuesto que debes pagar en 2024 es de:</h3>
+                <h2 className='text-lg'>${tax.toLocaleString()} COP</h2>
+              </div>
+  
+              <div className="mb-4">
+                <h3>Tus ingresos netos anuales son </h3>
+                <h2 className='text-lg'>${(annualGrossIncome - tax).toLocaleString()} COP</h2>
+              </div>
             </div>
-
-            <div className="mb-4">
-              <h3>Tus ingresos netos anuales son </h3>
-              <h2 className='text-lg'>${(annualGrossIncome - tax).toLocaleString()} COP</h2>
-            </div>
-          </div>)
           }}
         </div>
       </div>
