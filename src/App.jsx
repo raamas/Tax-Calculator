@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import './App.css'
 
-function Content({annualGrossIncome,tax}){
+function Content({income,tax}){
   return(
     <div className='result mt-2 gap-2' >
               <div className='mb-4'>
                 <h3>Tus ingresos anuales fueron de:</h3>
-                <h2 className='text-lg'>${annualGrossIncome.toLocaleString()} COP</h2>
+                <h2 className='text-lg'>${income.toLocaleString()} COP</h2>
               </div>
 
               <div className="mb-4">
@@ -16,7 +16,7 @@ function Content({annualGrossIncome,tax}){
   
               <div className="mb-4">
                 <h3>Tus ingresos netos anuales son </h3>
-                <h2 className='text-lg'>${(annualGrossIncome - tax).toLocaleString()} COP</h2>
+                <h2 className='text-lg'>${(income - tax).toLocaleString()} COP</h2>
               </div>
       </div>
   )
@@ -75,7 +75,7 @@ function App() {
             <button onClick={calculateTax} className='btn w-full mb-2 btn-primary'>Calcular</button>
           </div>
 
-          {(grossIncome != 0)&&<Content/>}
+          {(grossIncome != 0)&&<Content income={annualGrossIncome} tax={tax}/>}
         </div>
       </div>
     </>
