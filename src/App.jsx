@@ -34,6 +34,7 @@ function App() {
   }
   
   const calculateTax = () => {
+    setShowResult(true)
     let grossUVTIncome = grossIncome * 12 / UVT
     let marginalTaxRate = 0
     let additionalTax = 0
@@ -60,7 +61,6 @@ function App() {
 
     setTax(marginalTaxRate / 100 * grossIncome + additionalTax)
     setAnnualGrossIncome(e.target.value * 12)
-    setShowResult(true)
   }
 
   return (
@@ -75,7 +75,8 @@ function App() {
             <button onClick={calculateTax} className='btn w-full mb-2 btn-primary'>Calcular</button>
           </div>
 
-          {(showResult)&&<Content income={annualGrossIncome} tax={tax}/>}
+          {showResult}
+          {(showResult==true)&&<Content income={annualGrossIncome} tax={tax}/>}
         </div>
       </div>
     </>
