@@ -60,7 +60,7 @@ function App() {
 
     setTax(marginalTaxRate / 100 * grossIncome + additionalTax)
     setAnnualGrossIncome(e.target.value * 12)
-    // setAnnualNetIncome(annualGrossIncome - tax)
+    setAnnualNetIncome(annualGrossIncome - tax)
   }
 
   return (
@@ -75,7 +75,7 @@ function App() {
             <button onClick={calculateTax} className='btn w-full mb-2 btn-primary'>Calcular</button>
           </div>
 
-          {(grossIncome != 0)&&<Content income={annualGrossIncome} tax={tax}/>}
+          {(annualNetIncome != 0)&&<Content income={annualGrossIncome} tax={tax}/>}
         </div>
       </div>
     </>
