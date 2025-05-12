@@ -60,7 +60,7 @@ function App() {
 
     setTax(marginalTaxRate / 100 * grossIncome + additionalTax)
     setAnnualGrossIncome(e.target.value * 12)
-    setShowResult(True)
+    setShowResult(true)
   }
 
   return (
