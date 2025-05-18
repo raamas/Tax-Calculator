@@ -3,20 +3,26 @@ import './App.css'
 
 function Content({income,tax}){
   return(
-    <div className='result mt-2 gap-2' >
-              <div className='mb-4'>
+    <div className='result mt-4 gap-1' >
+              <div className='mb-2'>
                 <h3>Tus ingresos anuales fueron de:</h3>
                 <h2 className='text-lg'>${income.toLocaleString()} COP</h2>
               </div>
 
-              <div className="mb-4">
+              <div className="mb-2">
                 <h3>El impuesto que debes pagar en 2024 es de:</h3>
                 <h2 className='text-lg'>${tax.toLocaleString()} COP</h2>
               </div>
   
-              <div className="mb-4">
+              <div className="mb-2">
                 <h3>Tus ingresos netos anuales son </h3>
                 <h2 className='text-lg'>${(income - tax).toLocaleString()} COP</h2>
+              </div>
+
+
+              <div className="mb-2">
+                <h3>Tus ingresos netos mensuales son </h3>
+                <h2 className='text-lg'>${((income-tax)/12).toLocaleString()} COP</h2>
               </div>
       </div>
   )
@@ -31,6 +37,7 @@ function App() {
 
   const calculateTax = () => {
     setShowResult(true)
+    setGrossIncome(parseInt(grossIncome))
     let grossUVTIncome = grossIncome * 12 / UVT
     let marginalTaxRate = 0
     let additionalTax = 0
@@ -67,7 +74,7 @@ function App() {
         <div className='content mt-4'>
           <div className='form flex flex-col items-center justify-center' >
             <label className='mb-2'>¿Cuales son tus ingresos mensuales?</label>
-            <input type="number" className='input input-bordered w-full mb-2' value={grossIncome.toLocaleString()} onChange={(e)=>{setGrossIncome(e.target.value)}} />
+            <input type="number" className='input input-bordered w-full mb-2' value={grossIncome.toLocaleString()} onChange={(e)=>{setGrossIncome(e.target.value.toLocaleString())}} />
             <button onClick={calculateTax} className='btn w-full mb-2 btn-primary'>Calcular</button>
           </div>
 
