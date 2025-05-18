@@ -33,7 +33,7 @@ function App() {
   const [annualGrossIncome, setAnnualGrossIncome] = useState(0)
   const [showResult, setShowResult] = useState(false)
   const [tax, setTax] = useState(0)
-  const UVT = 47065
+  const UVT = 49800
 
   const calculateTax = () => {
     setShowResult(true)
